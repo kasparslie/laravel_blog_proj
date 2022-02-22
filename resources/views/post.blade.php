@@ -1,15 +1,16 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="/app.css">
-    <title>my blog</title>
-<body>
+<x-layout>
+
     <article>
-        dd($post)
-        <h1><?= $post -> title; ?></h1>
+            <h1>{{$post -> title }}</h1>
+            <p>
+                <a href="/categories/{{ $post->category->id }}">{{$post->category->name }}</a>
+            </p>
 
         <div>
-            <p><?= $post -> body; ?></p>
+            <p>{!!$post -> body !!}</p>
         </div>
     </article>
 
     <a href="/">Go Back</a>
-</body>
+
+</x-layout>

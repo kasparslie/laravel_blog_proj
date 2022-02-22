@@ -23,15 +23,22 @@ Route::get('/', function () {
 
     });
 
-Route::get('posts/{post}', function ($slug) {
-
-    //find a post by its slug and pass it to a view called "post"
-    return view ('post', [
-        'post' => Post::find($slug)
+    Route::get('posts/{post}', function (Post $post) {
+        return view ('post', [
+        'post' => $post
     ]);
 
+    Route::get('categories/{category}', function (Category $category) {
+        dd($category);
+        return view ('posts', [
+            'posts' => $category->posts
+        ]);
+
+    });
+
 });
-// ->where('post', '[A-z_\-]+');
+
+?>
 
 
 

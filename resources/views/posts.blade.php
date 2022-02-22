@@ -1,19 +1,22 @@
-<!DOCTYPE html>
-<link rel="stylesheet" href="/app.css">
-    <title>my blog</title>
-<body>
-    <?php foreach ($posts as $post) : ?>
-    <article>
-        <h1>
-            <a href="/posts/<?= $post -> slug; ?>">
-            <?= $post -> title; ?>
-            </a>
-        </h1>
+<x-layout>
+@foreach ($posts as $post)
 
-        <div>
-            <p><?= $post -> excerpt; ?><p>
-        </div>
-    </article>
-    <?php endforeach; ?>
+<article>
+    {{-- <?php echo($post) ?> --}}
+    <h1>
+        <a href="/posts/{{$post -> id}}">
+        {{$post -> title }}
+        </a>
+    </h1>
+    <p>
+        <a href="/categories/{{ $post->category->id }}">{{$post->category->name }}</a>
+    </p>
 
-</body>
+
+
+    <div>
+        <p>{{$post -> excerpt}} <p>
+    </div>
+</article>
+@endforeach
+</x-layout>
